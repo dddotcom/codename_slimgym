@@ -1,5 +1,6 @@
 class UserController < ApplicationController
   def create
+    # render json: User.create(user_params)
     User.create(user_params)
     redirect_to login_path
   end

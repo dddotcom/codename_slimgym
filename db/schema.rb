@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405233552) do
+ActiveRecord::Schema.define(version: 20170406231928) do
+
+  create_table "checkins", force: :cascade do |t|
+    t.datetime "timeIn"
+    t.datetime "timeOut"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_checkins_on_user_id"
+  end
+
+  create_table "gyms", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "isPayableInCash"
+    t.integer  "rateYear"
+    t.integer  "rateMonth"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +40,15 @@ ActiveRecord::Schema.define(version: 20170405233552) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
+    t.string   "name"
     t.string   "password_digest"
+    t.integer  "dividend"
+    t.integer  "gym_id"
+    t.integer  "paycycle"
+    t.integer  "streak"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["gym_id"], name: "index_users_on_gym_id"
   end
 
 end

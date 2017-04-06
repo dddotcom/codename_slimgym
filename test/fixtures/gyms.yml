@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  isPayableInCash: false
+  rateYear: 1
+  rateMonth: 1
+
+two:
+  name: MyString
+  isPayableInCash: false
+  rateYear: 1
+  rateMonth: 1

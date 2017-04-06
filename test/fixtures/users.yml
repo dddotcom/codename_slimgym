@@ -2,8 +2,18 @@
 
 one:
   email: MyString
+  name: MyString
   password_digest: MyString
+  dividend: 1
+  gym: one
+  paycycle: 1
+  streak: 1
 
 two:
   email: MyString
+  name: MyString
   password_digest: MyString
+  dividend: 1
+  gym: two
+  paycycle: 1
+  streak: 1
