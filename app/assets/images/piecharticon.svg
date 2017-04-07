@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard_whealth" transform="translate(-1168.000000, -451.000000)">
+            <g id="Group" transform="translate(886.000000, 166.000000)">
+                <g id="Group-6" transform="translate(283.000000, 286.000000)">
+                    <path d="M23.0106478,46 C35.7073164,46 46,35.7073164 46,23.0106478 C46,10.3139792 35.5932974,0.0212956528 23.0106478,0.0212956528 L23.0106478,22.5376159 C23.0106478,22.5376159 23,22.3484031 0.0212956528,23.0106478 C-0.546342672,35.025659 10.3139792,46 23.0106478,46 Z" id="Oval" fill="#FFA24F"></path>
+                    <path d="M23,46 C35.7025492,46 46,35.7025492 46,23 C46,10.2974508 35.7025492,0 23,0 C17.0772694,0 11.6774104,2.23867941 7.60044098,5.91602027 C2.93348658,10.1255152 0,16.2201813 0,23 C0,35.7025492 10.2974508,46 23,46 Z" id="Oval" stroke="#FFA24F" stroke-width="0.5"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

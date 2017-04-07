@@ -88,9 +88,22 @@ body {
     color: white
 }
 
-
 input {
     color: black
+}
+
+.btn-profile {
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.btn-profile:hover {
+  border: 2px solid #FFA24F;
+  color: white;
 }
 
 .default-btn {
@@ -142,6 +155,10 @@ ul#white {
     color: #205A66;
 }
 
+.white {
+  color: white;
+}
+
 #home_svg {
     display: block;
     margin: 0 auto;
@@ -174,3 +191,4 @@ ul#white {
 li#default-btn {
     margin-right: 20px;
 }
+
