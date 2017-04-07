@@ -6,7 +6,6 @@
       <%= p.text_field :name, placeholder: "Enter your name"  %>
       <%= p.email_field :email, placeholder: "Enter your email"  %>
       <%= p.password_field :password, placeholder: "Enter your password"  %>
-      <%= p.check_box :isGym, label: 'You a gym?'%>
       <%= p.collection_select :gym_id, @gyms, :id, :name %>
       <%= p.primary "Submit" %>
     <% end %>

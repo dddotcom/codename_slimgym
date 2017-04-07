@@ -1,0 +1,12 @@
+<div class="text-center">
+  <h1>So you want to go to the gym?</h1>
+
+  <div class="container text-left">
+    <%= bootstrap_form_for :checkin do |p| %>
+      <%= p.datetime_field :start_time, placeholder: "Enter time u want to work out"  %>
+      <%= p.datetime_field :end_time, placeholder: "Enter time u 'finished' working out"  %>
+      <%= p.primary "Submit" %>
+    <% end %>
+  </div>
+
+</div>

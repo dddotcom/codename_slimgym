@@ -12,7 +12,7 @@ class UserController < ApplicationController
 
   def show
     @user = @current_user
-    if @current_user.paycycle
+    if @current_user.paycycle > 0
       @paycycle = Paycycle.find(@current_user.paycycle)
     end
     @checkins = Checkin.where(:user_id => @current_user.id)
@@ -28,6 +28,10 @@ class UserController < ApplicationController
     u = User.find(@current_user.id)
     u.update(user_params)
     redirect_to "/users/show"
+  end
+
+  def wentToGymBeezies
+    puts "Hey thare yall gym brethren"
   end
 
   private
