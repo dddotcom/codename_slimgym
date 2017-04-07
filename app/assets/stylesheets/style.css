@@ -224,3 +224,7 @@ h2 strong {
     margin-left: 90px;
 }
 
+#selected {
+    border-color: #FFA24F;
+}
+
