@@ -217,3 +217,7 @@ h2 strong {
 .move-right {
     margin-left: 90px;
 }
+
+#selected {
+    border-color: #FFA24F;
+}
