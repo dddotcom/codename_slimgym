@@ -1,0 +1,2 @@
+class Paycycle < ApplicationRecord
+end

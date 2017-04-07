@@ -1,8 +1,10 @@
-<a href="/login">Login</a>
-<a href="/signup">Signup</a>
-<a href="/logout">Logout</a>
 <h1>This is my home page</h1>
 
 <div>
-
+  <% if @current_user %>
+    <%= @current_user.email %>
+  <% end %>
+  <% if @current_user %>
+    <a href="/users/show"><%=@current_user.name%></a>
+  <% end %>
 </div>

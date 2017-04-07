@@ -1,7 +1,13 @@
-<h1>Sign Up</h1>
 <a href="/">Home</a>
-<%= form_for :user do |f| %>
-  <%= f.email_field :email, placeholder: "Enter your email" %>
-  <%= f.password_field :password, placeholder: "Enter your password" %>
-  <%= f.submit "Signup" %>
-<% end %>
+<div class="text-center">
+  <h1>So you want to have a party?</h1>
+  <div class="container text-left">
+    <%= bootstrap_form_for :user do |p| %>
+      <%= p.text_field :name, placeholder: "Enter your name"  %>
+      <%= p.email_field :email, placeholder: "Enter your email"  %>
+      <%= p.password_field :password, placeholder: "Enter your password"  %>
+      <%= p.collection_select :gym_id, @gyms, :id, :name %>
+      <%= p.primary "Submit" %>
+    <% end %>
+  </div>
+</div>
