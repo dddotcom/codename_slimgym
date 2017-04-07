@@ -1,14 +1,23 @@
 <div class="text-center">
-  <h1>Whealth</h1>
+  <h1><span class="orange">w</span>health</h1>
   <p>Is an app that pays you to go to the gym.</p>
 </div>
 
-
-<div>
-  <% if @current_user %>
-    <%= @current_user.email %>
-  <% end %>
-  <% if @current_user %>
-    <a href="/users/show"><%=@current_user.name%></a>
-  <% end %>
+<div class="row">
+  <div class="col-xs-12 col-md-2 col-md-offset-2 homeImg1">
+  </div>
+  <div class="col-xs-12 col-md-2 col-md-offset-1 homeImg2">
+  </div>
+  <div class="col-xs-12 col-md-2 col-md-offset-1 homeImg3">
+  </div>
+  <div class="col-xs-12 col-md-2 col-md-offset-2 text-center">
+    <h3>1. Sign Up</h3>
+  </div>
+  <div class="col-xs-12 col-md-2 col-md-offset-1 text-center">
+    <h3>2. Work Out</h3>
+  </div>
+  <div class="col-xs-12 col-md-2 col-md-offset-1 text-center">
+    <h3>3. Get Paid</h3>
+  </div>
 </div>
+

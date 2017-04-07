@@ -1,10 +1,10 @@
 <div class="navbar navbar-default">
   <div class="navbar-header">
-    <a class="navbar-brand" href="/">Whealth</a>
+    <a id="white" class="navbar-brand" href="/"><span class="orange">w</span>health</a>
   </div>
-  <ul class="nav navbar-nav pull-right">
+  <ul id="white" class="nav navbar-nav pull-right">
     <% if @current_user %>
-      <li><a class="btn" href="/users/show">Profile</a></li>
+      <li><a class="btn" href="/users/show">Hello, <%= @current_user.name%></a></li>
       <li><a class="btn" href="/logout">Logout</a></li>
     <% else %>
       <li><a class="btn" href="/login">Login</a></li>

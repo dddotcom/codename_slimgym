@@ -1,3 +1,8 @@
+body {
+    background-color: #205A66;
+    color: white;
+}
+
 .filledDate {
     background-color: red;
 }
@@ -9,8 +14,8 @@
 
 .toggle {
     margin-bottom: 20px;
-    background-color: orange;
-    border-color: blue;
+    background-color: #FFA24F;
+    border-color: #205A66;
     font-size: 30px;
 }
 
@@ -20,10 +25,50 @@
 }
 
 .toggle:active {
-    background-color: orange;
-    border-color: blue;
+    background-color: #FFA24F;
+    border-color: #205A66;
 }
 
 .toggle:hover {
-    background-color: #696969;
+    background-color: #205A66;
+}
+
+.homeImg1 { 
+    height: 400px;
+    background-image: url("http://dandellscreations.com/wp-content/uploads/2015/01/signup.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.homeImg2 { 
+    height: 400px;
+    background-image: url("https://images.stockfreeimages.com/797/sfi/free_7972896.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.homeImg3 { 
+    height: 400px;
+    background-image: url("http://bagtaxscam.com/wp-content/uploads/2014/07/money-changing-hands-crop-900x506.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.orange {
+    color: #FFA24F;
+}
+
+.navbar {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: white;
+}
+.navbar-brand {
+    font-size: 40px;
+}
+.blue {
+    color: #205A66;
+}
+#white {
+    color: white;
+}
+#white li a {
+    color: white
 }
