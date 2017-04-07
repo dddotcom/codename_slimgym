@@ -24,6 +24,7 @@ gem 'd3_rails'
 gem 'c3-rails'
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
+gem 'typekit-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

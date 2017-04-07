@@ -17,4 +17,5 @@
 //= require d3
 //= require c3
 //= require script
+//= require typekit
 //= require_tree .

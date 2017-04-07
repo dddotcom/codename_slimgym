@@ -134,15 +134,21 @@ input {
     border: 1px solid #FFFFFF;
 }
 
+ul#white {
+    margin-right: 20px;
+}
+
 
 #white #default-btn {
     border-radius: 8px;
     color: #FFFFFF;
-    padding: 8px;
-    margin-top: 3px;
-    margin-right: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 9px;
+    margin-right: 20px;
 }
-
 
 #white #default-btn:hover {
     border-radius: 8px;
@@ -152,3 +158,37 @@ input {
 .white {
   color: white;
 }
+
+#home_svg {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+}
+
+#home_icon_row {
+    margin-top: 280px;
+}
+
+#home_page_title {
+    margin-top: 40px;
+}
+
+#sign_up {
+    display: block;
+    margin: 60px auto;
+    padding: 5px 90px 5px 90px;
+    background-color: #FFA24F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 2em;
+}
+
+#sign_up a {
+    color: white;
+}
+
+li#default-btn {
+    margin-right: 20px;
+}
+
