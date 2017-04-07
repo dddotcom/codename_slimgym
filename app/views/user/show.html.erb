@@ -1,16 +1,12 @@
-
-
-<h2 class="text-center">"Now isn't the time for that" -Prof Oak</h2>
-
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <div class="row">
         <div class="col-xs-6">
-          <h2>Total earned <br>this month:</h2>
+          <h2>Total earned this <br>month:</h2>
         </div>
         <div class="col-xs-6">
-          <h1>$<%= @checkins.length %></h1>
+          <h1 class="text-right"><strong>$<%= @checkins.length %></strong></h1>
         </div>
       </div>
         <hr>
@@ -19,16 +15,6 @@
       <button class="btn btn-profile">Deposit it into my bank account</button>
       <br><br>
       <button class="btn btn-profile">Put it towards my next membership fee</button>
-      <br><br>
-      <div class="row">
-        <div class="col-xs-6">
-          <h2>Total earned <br>to date:</h2>
-        </div>
-        <div class="col-xs-6">
-          <h1>$<%= @current_user.dividend %></h1>
-        </div>
-      </div>
-      <hr>
     </div>
     <div class="col-xs-12 col-sm-6 graphs">
       <div class="btn-group">
@@ -40,40 +26,47 @@
       <div id="chart"></div>
     </div>
   </div>
-</div>
 
 
 
-<div class="col-xs-6 col-xs-offset-1 graphs">
-    <div id="line">
-    </div>
-    <div id="calendar">
-    <%= month_calendar events: @checkins do |date, checkins| %>
-        <%= date %>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 graphs">
+    <h2 class="text-left">Total earned to date: <strong>$<%= @current_user.dividend %></strong></h2>
+    <hr>
+      <h3 id="month">April</h3>
+      <div id="line">
+      </div>
+      <div id="calendar">
+        <%= month_calendar events: @checkins do |date, checkins| %>
+            <%= date %>
 
-        <% checkins.each do |checkin| %>
-            <div>
-                Went to <%= @current_user.gym.name %>
-            </div>
+            <% checkins.each do |checkin| %>
+                <div>
+                    Went to <%= @current_user.gym.name %>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
+      </div>
+      <div class="btn-group">
+        <button type="button" id="lineTrue" class="btn btn-primary toggle"><i class="fa fa-line-chart" aria-hidden="true"></i></button>
+        <button type="button" id="lineFalse" class="btn btn-primary toggle"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+      </div>
+  </div>
+  <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+    <br><br>
+    <h2><strong><%= @checkins.length %></strong> <small class="white">days you've gone this week</small></h2>
+    <hr>
+    <br><br>
+    <h2><strong>29%</strong> <small class="white">increase from last week</small></h2>
+    <hr>
+    <br><br>
+    <h2><strong>30%</strong> <small class="white">increase from last month</small></h2>
+    <hr>
+  </div>
 </div>
-    <button type="button" id="lineTrue" class="btn btn-primary toggle"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
-    <button type="button" id="lineFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
+
+
 </div>
-
-
-<h1>My name is <%=@current_user.name%></h1>
-<p>Email: <%=@current_user.email%></p>
-<p>Longest Streak: <%=@current_user.streak%></p>
-<%if @paycycle %>
-    <p>Paycycle: <%=@paycycle.name.capitalize%></p>
-<%end%>
-<p>Gym: <%= @current_user.gym.name %></p>
-
-<p>Number of checkins this month: <%= @checkins.length %></p>
-
-
 
 
 <script>
@@ -145,18 +138,14 @@ function renderChart() {
             },
             pie: {
                 label: {
-                color: "#00ff00 ",
-                format: function (value, ratio, id) {
-                if(value === numCheckins){
-                    // return d3.format('')(value) + " days you've been to the gym this month";
-                    return d3.format('')(value);
-                }
-                else if (value === daysLeft){
-                    // return d3.format('')(value) + " days total this month";
-                    return;
-                }
-
-                }
+                  format: function (value, ratio, id) {
+                    if(value === numCheckins){
+                        return d3.format('')(value);
+                    }
+                    else if (value === daysLeft){
+                        return;
+                    }
+                  }
                 }
             }
         });
@@ -195,7 +184,15 @@ function renderChart() {
             data: {
                 columns: [
                     ['April', 1, 4, 5, 0],
-                ]
+                ],
+            },
+            axis: {
+                x: {
+                    label: 'Weeks'
+                },
+                y: {
+                    label: 'Gym Visits'
+                }
             }
         });
         $('#calendar').hide()
