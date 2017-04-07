@@ -1,3 +1,7 @@
 .filledDate {
     background-color: red;
 }
+
+.graphs {
+    min-height: 400px;
+}

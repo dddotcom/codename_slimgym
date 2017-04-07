@@ -16,6 +16,9 @@ class UserController < ApplicationController
       @paycycle = Paycycle.find(@current_user.paycycle)
     end
     @checkins = Checkin.where(:user_id => @current_user.id)
+    gon.num_checkins = @checkins.length
+    gon.max_checkins = 30
+
   end
 
   def edit

@@ -6,9 +6,13 @@
 <%end%>
 <p>Gym: <%= @current_user.gym.name %></p>
 
-<p>Number of checkins: <%= @checkins.length%></p>
+<p>Number of checkins: <%= @numCheckins %></p>
 
-<div class="container">
+<% @checkins.each do |c| %>
+    <%= c.start_time %>
+<%end%>
+<br>
+<div class="col-xs-6">
     <%= month_calendar events: @checkins do |date, checkins| %>
         <%= date %>
 
@@ -19,6 +23,14 @@
         <% end %>
     <% end %>
     <li><a href="/checkins/new">Add new checkin</a></li>
+</div>
+
+<div class="col-xs-6 graphs">
+    <button type="button" id="toggleChart" class="btn btn-default">Toggle</button>
+    <div id="chart">
+    </div>
+    
+    
 </div>
 
 <%= link_to "Edit", users_edit_path(@current_user), class: 'btn btn-info'%>
