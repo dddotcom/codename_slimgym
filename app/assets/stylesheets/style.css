@@ -1,6 +1,7 @@
 body {
     background-color: #205A66;
     color: white;
+    font-family: 'Palanquin Dark', sans-serif;
 }
 
 .filledDate {
@@ -195,4 +196,33 @@ ul#white {
 
 li#default-btn {
     margin-right: 20px;
+}
+
+.btn-profile:focus {
+    outline: none;
+}
+
+#nav_logo {
+    width: 200px;
+}
+
+span.calendar-title {
+    color: #205A66;
+}
+
+h1 strong {
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+h2 strong {
+    font-size: 1.75em;
+}
+
+.move-right {
+    margin-left: 90px;
+}
+
+#selected {
+    border-color: #FFA24F;
 }
