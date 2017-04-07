@@ -4,8 +4,8 @@
     <%= bootstrap_form_for :user do |p| %>
       <%= p.collection_select :paycycle, @paycycles, :id, :name %>
       <%= p.collection_select :gym_id, @gyms, :id, :name %>
-      <%= p.primary "Submit" %>
-      <a href="/users/show" class="btn btn-info">Go back</a> 
+      <%= p.primary "Submit", class: 'btn default-btn' %>
+      <a href="/users/show" class="btn default-btn">Go back</a> 
     <% end %>
   </div>
 </div>

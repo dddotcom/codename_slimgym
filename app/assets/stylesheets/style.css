@@ -8,8 +8,14 @@ body {
 }
 
 .graphs {
-    min-height: 400px;
+    min-height: 500px;
     text-align: center;
+}
+
+#graphBtn {
+    position: absolute;
+    bottom: 0px;
+    left: 38%
 }
 
 .toggle {
@@ -18,6 +24,7 @@ body {
     border-color: #FFA24F;
     font-size: 30px;
 }
+
 .toggle:focus {
     outline: none;
     border-color: #FFA24F; 
@@ -79,4 +86,51 @@ body {
 }
 #white li a {
     color: white
+}
+
+input {
+    color: black
+}
+
+.default-btn {
+    background-color: #205A66;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+}
+
+.default-btn:hover {
+    color: #205A66;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+
+#default-btn {
+    border-radius: 8px;
+    background-color: #205A66;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+#default-btn:hover {
+    border-radius: 8px;
+    color: #205A66;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+
+#white #default-btn {
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 8px;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+
+
+#white #default-btn:hover {
+    border-radius: 8px;
+    color: #205A66;
 }

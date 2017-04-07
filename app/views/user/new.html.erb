@@ -1,13 +1,10 @@
-<a href="/">Home</a>
-<div class="text-center">
-  <h1>So you want to have a party?</h1>
-  <div class="container text-left">
-    <%= bootstrap_form_for :user do |p| %>
-      <%= p.text_field :name, placeholder: "Enter your name"  %>
-      <%= p.email_field :email, placeholder: "Enter your email"  %>
-      <%= p.password_field :password, placeholder: "Enter your password"  %>
-      <%= p.collection_select :gym_id, @gyms, :id, :name %>
-      <%= p.primary "Submit" %>
-    <% end %>
-  </div>
+<div class="col-xs-8 col-xs-offset-2 text-left">
+<h1>Signup</h1>
+  <%= bootstrap_form_for :user do |p| %>
+    <%= p.text_field :name, placeholder: "Enter your name"  %>
+    <%= p.email_field :email, placeholder: "Enter your email"  %>
+    <%= p.password_field :password, placeholder: "Enter your password"  %>
+    <%= p.collection_select :gym_id, @gyms, :id, :name %>
+    <%= p.primary "Submit", class: 'btn default-btn' %>
+  <% end %>
 </div>

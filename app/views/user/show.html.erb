@@ -11,37 +11,26 @@
 
 <p>Number of checkins this month: <%= @checkins.length %></p>
 
-<% @checkins.each do |c| %>
-    <%= c.start_time %>
-<%end%>
-<br>
-<div class="col-xs-6">
-    <%= month_calendar events: @checkins do |date, checkins| %>
-        <%= date %>
-
-        <% checkins.each do |checkin| %>
-            <div>
-                Went to <%= @current_user.gym.name %>
-            </div>
-        <% end %>
-    <% end %>
-    <!-- <li><a href="/checkins/new">Add new checkin</a></li> -->
-</div>
 
 
-<div class="col-xs-6 graphs">
-    <div class="btn-group">
-        <button type="button" id="pieTrue" class="btn btn-primary toggle"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
-        <button type="button" id="pieFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
-    </div>
+<div class="col-xs-6 graphs" id="graphs">
     <div id="chart">
     </div>
+    <h1 id="message">
+    </h1>
+    <div class="btn-group" id="graphBtn">
+        <button type="button" id="barTrue" class="btn btn-primary toggle"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
+        <button type="button" id="barFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
+    </div>
+</div>
+<div class="col-xs-6 graphs">
+    <div id="pie">
+    </div>
 </div>
 
-<%= link_to "Edit", users_edit_path(@current_user), class: 'btn btn-info'%>
 
 <script>
-    var pie = true;
+    var bar = true;
     var isGoal = false;
     var chart, chart2;
     var numCheckins = gon.num_checkins;
@@ -49,44 +38,43 @@
     var daysLeft = gon.days_left;
 
 renderChart();
-$("#pieTrue").css("background-color", "#205A66")
+$("#barTrue").css("background-color", "#205A66")
 function changeBorder() {
-    if (pie) {
-        $("#pieTrue").css("background-color", "#205A66")
-        $("#pieFalse").css("background-color", "#FFA24F")
+    if (bar) {
+        $("#barTrue").css("background-color", "#205A66")
+        $("#barFalse").css("background-color", "#FFA24F")
     } else {
-        $("#pieTrue").css("background-color", "#FFA24F")
-        $("#pieFalse").css("background-color", "#205A66")
+        $("#barTrue").css("background-color", "#FFA24F")
+        $("#barFalse").css("background-color", "#205A66")
     }
 }
 
-$("#pieTrue").click(function() {
-    pie = true
+$("#barTrue").click(function() {
+    bar = true
+    console.log(bar)
     renderChart();
     changeBorder();
 });
 
-$("#pieFalse").click(function() {
-    pie = false
+$("#barFalse").click(function() {
+    bar = false
+    console.log(bar)
     renderChart();
     changeBorder();
 });
 
 function renderChart() {
-    if(pie){
+    if(bar){
+        $("#message").html("Days a week per month")
         var chart = c3.generate({
-            bindto: '#chart',
             data: {
-            columns: [
-                ['Days Gone', numCheckins],
-                ['Days Left', daysLeft],
-                ['Money Lost', maxCheckins - numCheckins - daysLeft]
-            ],
-            type: 'pie'
+                columns: [
+                    ['April', 2, 3, 0, 1],
+                ]
             }
         });
     } else {
-
+        $("#message").html("Money earned!")
         var chart2 = c3.generate({
             bindto: '#chart',
             data: {
@@ -114,6 +102,18 @@ function renderChart() {
             },
         });
     }
+
+var chart3 = c3.generate({
+            bindto: '#pie',
+            data: {
+            columns: [
+                ['Days Gone', numCheckins],
+                ['Days Left', daysLeft],
+                ['Money Lost', maxCheckins - numCheckins - daysLeft]
+            ],
+            type: 'pie'
+            }
+        });
 }
 
 </script>

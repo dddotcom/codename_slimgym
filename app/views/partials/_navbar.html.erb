@@ -4,11 +4,12 @@
   </div>
   <ul id="white" class="nav navbar-nav pull-right">
     <% if @current_user %>
-      <li><a class="btn" href="/users/show">Hello, <%= @current_user.name%></a></li>
-      <li><a class="btn" href="/logout">Logout</a></li>
+      <li><a class="btn default-btn" id="default-btn" href="/users/show">Hello, <%= @current_user.name%></a></li>
+      <li><%= link_to "Edit Profile", users_edit_path(@current_user), class: 'btn default-btn', id: 'default-btn'%></li>
+      <li><a class="btn default-btn" id="default-btn" href="/logout">Logout</a></li>
     <% else %>
-      <li><a class="btn" href="/login">Login</a></li>
-      <li><a class="btn" href="/signup">Signup</a></li>
+      <li><a class="btn default-btn" id="default-btn" href="/login">Login</a></li>
+      <li><a class="btn default-btn" id="default-btn" href="/signup">Signup</a></li>
     <% end %>
   </ul>
 </div>

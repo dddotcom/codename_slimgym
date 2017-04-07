@@ -3,7 +3,7 @@
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: 0px;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid rgb(221, 221, 221);
+    border: 1px solid #FFA24F;
     border-collapse: collapse;
     box-sizing: border-box;
     max-width: 100%;
@@ -16,10 +16,10 @@
 
   th {
     padding: 6px;
-    border-bottom: 2px solid rgb(221, 221, 221);
+    border-bottom: 2px solid #FFA24F;
     border-collapse: collapse;
-    border-left: 1px solid rgb(221, 221, 221);
-    border-right: 1px solid rgb(221, 221, 221);
+    border-left: 1px solid #FFA24F;
+    border-right: 1px solid #FFA24F;
     border-top: 0px none rgb(51, 51, 51);
     box-sizing: border-box;
     text-align: left;
@@ -31,22 +31,24 @@
     width: 14%;
 
     border: 1px solid #ddd;
-    border-top-color: rgb(221, 221, 221);
+    border-top-color: #FFA24F;
     border-top-style: solid;
     border-top-width: 1px;
-    border-right-color: rgb(221, 221, 221);
+    border-right-color: #FFA24F;
     border-right-style: solid;
     border-right-width: 1px;
-    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: #FFA24F;
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    border-left-color: rgb(221, 221, 221);
+    border-left-color: #FFA24F;
     border-left-style: solid;
     border-left-width: 1px;
   }
 
   .day {
-    height: 80px;
+    color: white;
+    height: 70px;
+    background-color: #205A66;
   }
 
   .wday-0 {}
@@ -58,23 +60,30 @@
   .wday-6 {}
 
   .today {
-    background: #FFFFC0
+    background: #FFA24F
   }
 
-  .past {}
+  .past {
+  }
+
+  .past.has-events {
+    background: #228b22
+  }
   .future {}
 
   .start-date {}
 
   .prev-month {
     background: #DDD;
+    color: #ddd;
   }
   .next-month {
     background: #DDD;
+    color: #ddd;
   }
   .current-month {}
 
   .has-events {
-    background: #AA0000
+    background: #228b22
   }
 }
