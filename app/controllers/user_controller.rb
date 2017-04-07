@@ -1,4 +1,20 @@
 class UserController < ApplicationController
+
+
+  COMMON_YEAR_DAYS_IN_MONTH = [nil, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+  def days_in_month(month, year = Time.now.year)
+     return 29 if month == 2 && Date.gregorian_leap?(year)
+     COMMON_YEAR_DAYS_IN_MONTH[month]
+  end
+
+  def days_left_in_month(month)
+    current_date = Time.new
+    date = current_date.day
+    return days_in_month(month) - date + 1
+  end
+
+
   def create
     # render json: User.create(user_params)
     User.create(user_params)
@@ -17,8 +33,8 @@ class UserController < ApplicationController
     end
     @checkins = Checkin.where(:user_id => @current_user.id)
     gon.num_checkins = @checkins.length
-    gon.max_checkins = 30
-
+    gon.max_checkins = days_in_month(4)
+    gon.days_left = days_left_in_month(4)
   end
 
   def edit

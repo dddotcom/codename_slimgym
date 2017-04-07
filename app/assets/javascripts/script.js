@@ -1,10 +1,12 @@
 $(function(){
+    console.log("hey");
 
     var pie = true;
     var isGoal = false;
     var chart, chart2;
     var numCheckins = gon.num_checkins;
     var maxCheckins = gon.max_checkins;
+    var daysLeft = gon.days_left;
     renderChart();
 
     $("#toggleChart").click(function() {
@@ -20,9 +22,8 @@ $(function(){
                 data: {
                 columns: [
                     ['Days Gone', numCheckins],
-                    ['Days Left', 10],
-                    ['Money Lost', maxCheckins - numCheckins - 10]
-
+                    ['Days Left', daysLeft],
+                    ['Money Lost', maxCheckins - numCheckins - daysLeft]
                 ],
                 type: 'pie'
                 }
@@ -47,7 +48,7 @@ $(function(){
                     height: 180
                 },
                 gauge: {
-                    max: 30,
+                    max: maxCheckins,
                     label: {
                         format: function(val, ratio){
                             return '$' + val;
