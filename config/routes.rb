@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy"
   get 'signup' => "user#new"
   post 'signup' => "user#create"
-  
+  get 'users/show' => "user#show"
+  get 'users/edit' => "user#edit"
+  post 'users/edit' => "user#update"
+
+  resources :users
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

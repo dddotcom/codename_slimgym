@@ -1,0 +1,7 @@
+<h1>My name is <%=@current_user.name%></h1>
+<p>Email: <%=@current_user.email%></p>
+<p>Streak: <%=@current_user.streak%></p>
+<p>Paycycle: <%=@paycycle.name.capitalize%></p>
+<p>Gym: <%= @current_user.gym.name %></p>
+
+<%= link_to "Edit", users_edit_path(@current_user), class: 'btn btn-info'%>
