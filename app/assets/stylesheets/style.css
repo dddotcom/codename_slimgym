@@ -20,7 +20,7 @@ body {
 }
 .toggle:focus {
     outline: none;
-    border-color: #FFA24F; 
+    border-color: #FFA24F;
 }
 
 .toggle i {
@@ -38,19 +38,19 @@ body {
     background-color: #205A66;
 }
 
-.homeImg1 { 
+.homeImg1 {
     height: 400px;
     background-image: url("http://dandellscreations.com/wp-content/uploads/2015/01/signup.jpg");
     background-position: center;
     background-size: cover;
 }
-.homeImg2 { 
+.homeImg2 {
     height: 400px;
     background-image: url("https://images.stockfreeimages.com/797/sfi/free_7972896.jpg");
     background-position: center;
     background-size: cover;
 }
-.homeImg3 { 
+.homeImg3 {
     height: 400px;
     background-image: url("http://bagtaxscam.com/wp-content/uploads/2014/07/money-changing-hands-crop-900x506.jpg");
     background-position: center;
