@@ -35,6 +35,7 @@ class UserController < ApplicationController
     gon.num_checkins = @checkins.length
     gon.max_checkins = days_in_month(4)
     gon.days_left = days_left_in_month(4)
+    gon.user_id = @current_user.id
   end
 
   def edit
