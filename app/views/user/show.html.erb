@@ -1,3 +1,6 @@
+
+
+<h2 class="text-center">"Now isn't the time for that" -Prof Oak</h2>
 <h1>My name is <%=@current_user.name%></h1>
 <p>Email: <%=@current_user.email%></p>
 <p>Longest Streak: <%=@current_user.streak%></p>
@@ -93,7 +96,7 @@ function renderChart() {
                 type: 'gauge',
             },
             color: {
-                pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                pattern: ['#FFA24F', '#FFA24F', '#FFA24F', '#60B044'], // the three color levels for the percentage values.
                 threshold: {
                     values: [maxCheckins]
                 }
@@ -112,4 +115,5 @@ function renderChart() {
         });
     }
 }
+
 </script>

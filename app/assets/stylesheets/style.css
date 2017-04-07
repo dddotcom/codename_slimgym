@@ -15,18 +15,23 @@ body {
 .toggle {
     margin-bottom: 20px;
     background-color: #FFA24F;
-    border-color: #205A66;
+    border-color: #FFA24F;
     font-size: 30px;
+}
+.toggle:focus {
+    outline: none;
+    border-color: #FFA24F; 
 }
 
 .toggle i {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .toggle:active {
     background-color: #FFA24F;
     border-color: #205A66;
+    outline: none;
 }
 
 .toggle:hover {
@@ -67,6 +72,9 @@ body {
     color: #205A66;
 }
 #white {
+    color: white;
+}
+#white-brand {
     color: white;
 }
 #white li a {
