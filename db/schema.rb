@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20170407021043) do
     t.index ["user_id"], name: "index_checkins_on_user_id"
   end
 
+  create_table "creates", force: :cascade do |t|
+    t.string   "paycycle"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "gyms", force: :cascade do |t|
     t.string   "name"
     t.boolean  "isPayableInCash"
@@ -34,14 +41,6 @@ ActiveRecord::Schema.define(version: 20170407021043) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pets", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
