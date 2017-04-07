@@ -17,13 +17,12 @@
       <button class="btn btn-profile">Put it towards my next membership fee</button>
     </div>
     <div class="col-xs-12 col-sm-6 graphs">
-      <div class="btn-group">
+      <div id="chart"></div>
+      <div class="btn-group right">
           <button type="button" id="pieTrue" class="btn btn-primary toggle"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
-          <!-- <button type="button" id="pieTrue" class="btn btn-primary toggle"><%= image_tag 'piecharticon.svg' %></button> -->
-          <!-- <button type="button" id="pieFalse" class="btn btn-primary toggle"><%= image_tag 'barcharticon.svg' %></button> -->
           <button type="button" id="pieFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
       </div>
-      <div id="chart"></div>
+
     </div>
   </div>
 
@@ -57,11 +56,20 @@
     <h2><strong><%= @checkins.length %></strong> <small class="white">days you've gone this week</small></h2>
     <hr>
     <br><br>
-    <h2><strong>29%</strong> <small class="white">increase from last week</small></h2>
-    <hr>
-    <br><br>
-    <h2><strong>30%</strong> <small class="white">increase from last month</small></h2>
-    <hr>
+    <% if @current_user.id == 1 %>
+      <h2><strong>29%</strong> <small class="white">increase from last week</small></h2>
+      <hr>
+      <br><br>
+      <h2><strong>30%</strong> <small class="white">increase from last month</small></h2>
+      <hr>
+    <% else %>
+      <h2><strong>0%</strong> <small class="white">increase from last week</small></h2>
+      <hr>
+      <br><br>
+      <h2><strong>0%</strong> <small class="white">increase from last month</small></h2>
+      <hr>
+    <% end %>
+
   </div>
 </div>
 
@@ -77,11 +85,18 @@
    var numCheckins = gon.num_checkins;
    var maxCheckins = gon.max_checkins;
    var daysLeft = gon.days_left;
+   var lineData = []
+   if(gon.user_id === 1){
+     lineData = ['April', 1, 4, 5, 0];
+   } else {
+     lineData = ['April', 1, 0, 0, 0];
+   }
 
 renderChart();
-$("#pieTrue").css("background-color", "#205A66 ")
-function changeBorder() {
-    if (pie) {
+$("#pieTrue").css("background-color", "#FFA24F ")
+$("#pieFalse").css("background-color", "#205A66 ")
+function changeBorderPie() {
+    if (!pie) {
         $("#pieTrue").css("background-color", "#205A66 ")
         $("#pieFalse").css("background-color", "#FFA24F ")
     } else {
@@ -90,39 +105,42 @@ function changeBorder() {
     }
 }
 
-$("#lineTrue").css("background-color", "#205A66 ")
-function changeBorder() {
+$("#lineTrue").css("background-color", "#FFA24F ")
+$("#lineFalse").css("background-color", "#205A66 ")
+function changeBorderLine() {
     if (line) {
-        $("#lineTrue").css("background-color", "#205A66 ")
-        $("#lineFalse").css("background-color", "#FFA24F ")
-    } else {
         $("#lineTrue").css("background-color", "#FFA24F ")
         $("#lineFalse").css("background-color", "#205A66 ")
+    } else {
+        $("#lineTrue").css("background-color", "#205A66 ")
+        $("#lineFalse").css("background-color", "#FFA24F ")
     }
 }
 
 $("#lineTrue").click(function() {
     line = true
     renderChart();
-    changeBorder();
+    changeBorderLine();
 });
 
 $("#lineFalse").click(function() {
     line = false
     renderChart();
-    changeBorder();
+    changeBorderLine();
 });
 
 $("#pieTrue").click(function() {
+  console.log("pie true is clicked")
     pie = true
     renderChart();
-    changeBorder();
+    changeBorderPie();
 });
 
 $("#pieFalse").click(function() {
+  console.log("pie false is clicked")
     pie = false
     renderChart();
-    changeBorder();
+    changeBorderPie();
 });
 
 function renderChart() {
@@ -159,9 +177,9 @@ function renderChart() {
                 type: 'gauge',
             },
             color: {
-                pattern: ['#205A66 ', '#FFA24F ', '#FFA24F ', '#60B044 '], // the three color levels for the percentage values.
+                pattern: ['#FFA24F', '#FFA24F', '#205A66', '#205A66'], // the three color levels for the percentage values.
                 threshold: {
-                    values: [maxCheckins]
+                    values: [30, 60, 90, 100]
                 }
             },
             size: {
@@ -183,7 +201,8 @@ function renderChart() {
             bindto: '#line',
             data: {
                 columns: [
-                    ['April', 1, 4, 5, 0],
+                    lineData
+                    // ['April', 1, 4, 5, 0],
                 ],
             },
             axis: {

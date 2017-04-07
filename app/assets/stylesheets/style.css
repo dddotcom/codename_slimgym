@@ -42,7 +42,8 @@ body {
 }
 
 .toggle:hover {
-    background-color: #205A66;
+    border-color: #FFA24F;
+    color: #FFA24F
 }
 
 .homeImg1 {
@@ -101,9 +102,10 @@ input {
   background-color: transparent;
 }
 
-.btn-profile:hover {
+.btn-profile:hover, .btn-profile:focus {
   border: 2px solid #FFA24F;
   color: white;
+  outline:0;
 }
 
 .default-btn {
@@ -119,6 +121,9 @@ input {
     border: 1px solid #FFFFFF;
 }
 
+.right {
+  bottom: -68px;
+}
 
 #default-btn {
     border-radius: 8px;
@@ -191,4 +196,3 @@ ul#white {
 li#default-btn {
     margin-right: 20px;
 }
-
