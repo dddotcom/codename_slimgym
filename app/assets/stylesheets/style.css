@@ -87,10 +87,23 @@ body {
 #white li a {
     color: white
 }
-<<<<<<< HEAD
 
 input {
     color: black
+}
+
+.btn-profile {
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.btn-profile:hover {
+  border: 2px solid #FFA24F;
+  color: white;
 }
 
 .default-btn {
@@ -135,5 +148,3 @@ input {
     border-radius: 8px;
     color: #205A66;
 }
-=======
->>>>>>> c3923ddd82e07eb2bc344687b1a72855c874ac64

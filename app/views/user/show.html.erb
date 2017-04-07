@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <div class="row">
         <div class="col-xs-6">
           <h2>Total earned <br>this month:</h2>
@@ -15,9 +15,11 @@
       </div>
         <hr>
       <h4>At the end of this month, please: </h4>
-      <button class="btn">Deposit it into my bank account</button>
+      <br>
+      <button class="btn btn-profile">Deposit it into my bank account</button>
       <br><br>
-      <button class="btn">Put it towards my next membership fee</button>
+      <button class="btn btn-profile">Put it towards my next membership fee</button>
+      <br><br>
       <div class="row">
         <div class="col-xs-6">
           <h2>Total earned <br>to date:</h2>
@@ -28,20 +30,14 @@
       </div>
       <hr>
     </div>
-    <div class="col-xs-12 col-sm-4 graphs">
+    <div class="col-xs-12 col-sm-6 graphs">
       <div class="btn-group">
           <button type="button" id="pieTrue" class="btn btn-primary toggle"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+          <!-- <button type="button" id="pieTrue" class="btn btn-primary toggle"><%= image_tag 'piecharticon.svg' %></button> -->
+          <!-- <button type="button" id="pieFalse" class="btn btn-primary toggle"><%= image_tag 'barcharticon.svg' %></button> -->
           <button type="button" id="pieFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
       </div>
       <div id="chart"></div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="well">
-        hi
-      </div>
-      <div class="well">
-        hi
-      </div>
     </div>
   </div>
 </div>
