@@ -1,6 +1,53 @@
 
 
 <h2 class="text-center">"Now isn't the time for that" -Prof Oak</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-6">
+          <h2>Total earned <br>this month:</h2>
+        </div>
+        <div class="col-xs-6">
+          <h1>$<%= @checkins.length %></h1>
+        </div>
+      </div>
+        <hr>
+      <h4>At the end of this month, please: </h4>
+      <button class="btn">Deposit it into my bank account</button>
+      <br><br>
+      <button class="btn">Put it towards my next membership fee</button>
+      <div class="row">
+        <div class="col-xs-6">
+          <h2>Total earned <br>to date:</h2>
+        </div>
+        <div class="col-xs-6">
+          <h1>$<%= @current_user.dividend %></h1>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="col-xs-12 col-sm-4 graphs">
+      <div class="btn-group">
+          <button type="button" id="pieTrue" class="btn btn-primary toggle"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+          <button type="button" id="pieFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
+      </div>
+      <div id="chart"></div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="well">
+        hi
+      </div>
+      <div class="well">
+        hi
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <h1>My name is <%=@current_user.name%></h1>
 <p>Email: <%=@current_user.email%></p>
 <p>Longest Streak: <%=@current_user.streak%></p>
@@ -28,92 +75,116 @@
     </div>
 </div>
 
+<% @checkins.each do |c| %>
+    <%= c.start_time %>
+<%end%>
+<br>
+
+<div class="col-xs-6">
+    <%= month_calendar events: @checkins do |date, checkins| %>
+        <%= date %>
+
+        <% checkins.each do |checkin| %>
+            <div>
+                Went to <%= @current_user.gym.name %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+
+
+
 
 <script>
-    var bar = true;
-    var isGoal = false;
-    var chart, chart2;
-    var numCheckins = gon.num_checkins;
-    var maxCheckins = gon.max_checkins;
-    var daysLeft = gon.days_left;
+   var pie = true;
+   var isGoal = false;
+   var chart, chart2;
+   var numCheckins = gon.num_checkins;
+   var maxCheckins = gon.max_checkins;
+   var daysLeft = gon.days_left;
 
 renderChart();
-$("#barTrue").css("background-color", "#205A66")
+$("#pieTrue").css("background-color", "#205A66 ")
 function changeBorder() {
-    if (bar) {
-        $("#barTrue").css("background-color", "#205A66")
-        $("#barFalse").css("background-color", "#FFA24F")
-    } else {
-        $("#barTrue").css("background-color", "#FFA24F")
-        $("#barFalse").css("background-color", "#205A66")
-    }
+   if (pie) {
+       $("#pieTrue").css("background-color", "#205A66 ")
+       $("#pieFalse").css("background-color", "#FFA24F ")
+   } else {
+       $("#pieTrue").css("background-color", "#FFA24F ")
+       $("#pieFalse").css("background-color", "#205A66 ")
+   }
 }
 
-$("#barTrue").click(function() {
-    bar = true
-    console.log(bar)
-    renderChart();
-    changeBorder();
+$("#pieTrue").click(function() {
+   pie = true
+   renderChart();
+   changeBorder();
 });
 
-$("#barFalse").click(function() {
-    bar = false
-    console.log(bar)
-    renderChart();
-    changeBorder();
+$("#pieFalse").click(function() {
+   pie = false
+   renderChart();
+   changeBorder();
 });
 
 function renderChart() {
-    if(bar){
-        $("#message").html("Days a week per month")
-        var chart = c3.generate({
-            data: {
-                columns: [
-                    ['April', 2, 3, 0, 1],
-                ]
-            }
-        });
-    } else {
-        $("#message").html("Money earned!")
-        var chart2 = c3.generate({
-            bindto: '#chart',
-            data: {
-                columns: [
-                    ['Dollars Saved', (numCheckins)],
-                ],
-                type: 'gauge',
-            },
-            color: {
-                pattern: ['#FFA24F', '#FFA24F', '#FFA24F', '#60B044'], // the three color levels for the percentage values.
-                threshold: {
-                    values: [maxCheckins]
-                }
-            },
-            size: {
-                height: 180
-            },
-            gauge: {
-                max: maxCheckins,
-                label: {
-                    format: function(val, ratio){
-                        return '$' + val;
-                    }
-                }
-            },
-        });
-    }
+   if(pie){
+       var chart = c3.generate({
+           bindto: '#chart',
+           data: {
+           columns: [
+               ["days you've been to the gym this month", numCheckins],
+               ['days total this month', daysLeft],
+           ],
+           type: 'pie'
+           },
+           pie: {
+             label: {
+               color: "#00ff00 ",
+               format: function (value, ratio, id) {
+               if(value === numCheckins){
+                 // return d3.format('')(value) + " days you've been to the gym this month";
+                 return d3.format('')(value);
+               }
+               else if (value === daysLeft){
+                   // return d3.format('')(value) + " days total this month";
+                   return;
+               }
 
-var chart3 = c3.generate({
-            bindto: '#pie',
-            data: {
-            columns: [
-                ['Days Gone', numCheckins],
-                ['Days Left', daysLeft],
-                ['Money Lost', maxCheckins - numCheckins - daysLeft]
-            ],
-            type: 'pie'
-            }
-        });
+               }
+             }
+           }
+       });
+   } else {
+
+       var chart2 = c3.generate({
+           bindto: '#chart',
+           data: {
+               columns: [
+                   ['Dollars Saved', (numCheckins)],
+               ],
+               type: 'gauge',
+           },
+           color: {
+               pattern: ['#205A66 ', '#FFA24F ', '#FFA24F ', '#60B044 '], // the three color levels for the percentage values.
+               threshold: {
+                   values: [maxCheckins]
+               }
+           },
+           size: {
+               height: 180
+           },
+           gauge: {
+               max: maxCheckins,
+               label: {
+                   format: function(val, ratio){
+                       return '$' + val;
+                   }
+               }
+           },
+       });
+   }
 }
 
 </script>
