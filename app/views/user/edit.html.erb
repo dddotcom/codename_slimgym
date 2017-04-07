@@ -1,11 +1,11 @@
-<a href="/">Home</a>
 <div class="text-center">
-  <h1>So you want to be a clown?</h1>
+  <h1>Edit My Gym Info</h1>
   <div class="container text-left">
     <%= bootstrap_form_for :user do |p| %>
       <%= p.collection_select :paycycle, @paycycles, :id, :name %>
       <%= p.collection_select :gym_id, @gyms, :id, :name %>
       <%= p.primary "Submit" %>
+      <a href="/users/show" class="btn btn-info">Go back</a> 
     <% end %>
   </div>
 </div>

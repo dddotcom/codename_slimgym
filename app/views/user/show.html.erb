@@ -1,12 +1,12 @@
 <h1>My name is <%=@current_user.name%></h1>
 <p>Email: <%=@current_user.email%></p>
-<p>Streak: <%=@current_user.streak%></p>
+<p>Longest Streak: <%=@current_user.streak%></p>
 <%if @paycycle %>
     <p>Paycycle: <%=@paycycle.name.capitalize%></p>
 <%end%>
 <p>Gym: <%= @current_user.gym.name %></p>
 
-<p>Number of checkins: <%= @numCheckins %></p>
+<p>Number of checkins this month: <%= @checkins.length %></p>
 
 <% @checkins.each do |c| %>
     <%= c.start_time %>
@@ -22,8 +22,9 @@
             </div>
         <% end %>
     <% end %>
-    <li><a href="/checkins/new">Add new checkin</a></li>
+    <!-- <li><a href="/checkins/new">Add new checkin</a></li> -->
 </div>
+
 
 <div class="col-xs-6 graphs">
     <div class="btn-group">
@@ -32,8 +33,6 @@
     </div>
     <div id="chart">
     </div>
-    
-    
 </div>
 
 <%= link_to "Edit", users_edit_path(@current_user), class: 'btn btn-info'%>
