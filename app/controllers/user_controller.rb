@@ -12,7 +12,10 @@ class UserController < ApplicationController
 
   def show
     @user = @current_user
-    @paycycle = Paycycle.find(@current_user.paycycle)
+    if @current_user.paycycle
+      @paycycle = Paycycle.find(@current_user.paycycle)
+    end
+    @checkins = Checkin.where(:user_id => @current_user.id)
   end
 
   def edit

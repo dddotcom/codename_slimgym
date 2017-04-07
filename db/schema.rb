@@ -10,22 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407010005) do
+ActiveRecord::Schema.define(version: 20170407021043) do
 
   create_table "checkins", force: :cascade do |t|
-    t.datetime "timeIn"
-    t.datetime "timeOut"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_checkins_on_user_id"
-  end
-
-  create_table "creates", force: :cascade do |t|
-    t.string   "paycycle"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -43,6 +36,14 @@ ActiveRecord::Schema.define(version: 20170407010005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pets", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
@@ -51,8 +52,9 @@ ActiveRecord::Schema.define(version: 20170407010005) do
     t.integer  "gym_id"
     t.integer  "paycycle"
     t.integer  "streak"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "isGym",           default: false
     t.index ["gym_id"], name: "index_users_on_gym_id"
   end
 

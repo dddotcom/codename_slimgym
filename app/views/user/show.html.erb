@@ -1,7 +1,23 @@
 <h1>My name is <%=@current_user.name%></h1>
 <p>Email: <%=@current_user.email%></p>
 <p>Streak: <%=@current_user.streak%></p>
-<p>Paycycle: <%=@paycycle.name.capitalize%></p>
+<%if @paycycle %>
+    <p>Paycycle: <%=@paycycle.name.capitalize%></p>
+<%end%>
 <p>Gym: <%= @current_user.gym.name %></p>
+
+<p>Number of checkins: <%= @checkins.length%></p>
+
+<div class="container">
+    <%= month_calendar events: @checkins do |date, checkins| %>
+        <%= date %>
+
+        <% checkins.each do |checkin| %>
+            <div>
+                Went to <%= @current_user.gym.name %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
 
 <%= link_to "Edit", users_edit_path(@current_user), class: 'btn btn-info'%>
