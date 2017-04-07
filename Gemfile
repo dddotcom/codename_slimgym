@@ -22,6 +22,7 @@ gem 'gon'
 gem 'bootstrap_form'
 gem 'd3_rails'
 gem 'c3-rails'
+gem "font-awesome-rails"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

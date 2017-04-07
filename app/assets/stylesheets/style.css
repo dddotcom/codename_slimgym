@@ -4,4 +4,26 @@
 
 .graphs {
     min-height: 400px;
+    text-align: center;
+}
+
+.toggle {
+    margin-bottom: 20px;
+    background-color: orange;
+    border-color: blue;
+    font-size: 30px;
+}
+
+.toggle i {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.toggle:active {
+    background-color: orange;
+    border-color: blue;
+}
+
+.toggle:hover {
+    background-color: #696969;
 }
