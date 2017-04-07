@@ -44,6 +44,25 @@
 
 
 
+<div class="col-xs-6 col-xs-offset-1 graphs">
+    <div id="line">
+    </div>
+    <div id="calendar">
+    <%= month_calendar events: @checkins do |date, checkins| %>
+        <%= date %>
+
+        <% checkins.each do |checkin| %>
+            <div>
+                Went to <%= @current_user.gym.name %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+    <button type="button" id="lineTrue" class="btn btn-primary toggle"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
+    <button type="button" id="lineFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
+</div>
+
+
 <h1>My name is <%=@current_user.name%></h1>
 <p>Email: <%=@current_user.email%></p>
 <p>Longest Streak: <%=@current_user.streak%></p>
@@ -56,44 +75,10 @@
 
 
 
-<div class="col-xs-6 graphs" id="graphs">
-    <div id="chart">
-    </div>
-    <h1 id="message">
-    </h1>
-    <div class="btn-group" id="graphBtn">
-        <button type="button" id="barTrue" class="btn btn-primary toggle"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
-        <button type="button" id="barFalse" class="btn btn-primary toggle"><i class="fa fa-tasks" aria-hidden="true"></i></button>
-    </div>
-</div>
-<div class="col-xs-6 graphs">
-    <div id="pie">
-    </div>
-</div>
-
-<% @checkins.each do |c| %>
-    <%= c.start_time %>
-<%end%>
-<br>
-
-<div class="col-xs-6">
-    <%= month_calendar events: @checkins do |date, checkins| %>
-        <%= date %>
-
-        <% checkins.each do |checkin| %>
-            <div>
-                Went to <%= @current_user.gym.name %>
-            </div>
-        <% end %>
-    <% end %>
-</div>
-
-
-
-
 
 <script>
    var pie = true;
+   var line = true;
    var isGoal = false;
    var chart, chart2;
    var numCheckins = gon.num_checkins;
@@ -103,84 +88,123 @@
 renderChart();
 $("#pieTrue").css("background-color", "#205A66 ")
 function changeBorder() {
-   if (pie) {
-       $("#pieTrue").css("background-color", "#205A66 ")
-       $("#pieFalse").css("background-color", "#FFA24F ")
-   } else {
-       $("#pieTrue").css("background-color", "#FFA24F ")
-       $("#pieFalse").css("background-color", "#205A66 ")
-   }
+    if (pie) {
+        $("#pieTrue").css("background-color", "#205A66 ")
+        $("#pieFalse").css("background-color", "#FFA24F ")
+    } else {
+        $("#pieTrue").css("background-color", "#FFA24F ")
+        $("#pieFalse").css("background-color", "#205A66 ")
+    }
 }
 
+$("#lineTrue").css("background-color", "#205A66 ")
+function changeBorder() {
+    if (line) {
+        $("#lineTrue").css("background-color", "#205A66 ")
+        $("#lineFalse").css("background-color", "#FFA24F ")
+    } else {
+        $("#lineTrue").css("background-color", "#FFA24F ")
+        $("#lineFalse").css("background-color", "#205A66 ")
+    }
+}
+
+$("#lineTrue").click(function() {
+    line = true
+    renderChart();
+    changeBorder();
+});
+
+$("#lineFalse").click(function() {
+    line = false
+    renderChart();
+    changeBorder();
+});
+
 $("#pieTrue").click(function() {
-   pie = true
-   renderChart();
-   changeBorder();
+    pie = true
+    renderChart();
+    changeBorder();
 });
 
 $("#pieFalse").click(function() {
-   pie = false
-   renderChart();
-   changeBorder();
+    pie = false
+    renderChart();
+    changeBorder();
 });
 
 function renderChart() {
-   if(pie){
-       var chart = c3.generate({
-           bindto: '#chart',
-           data: {
-           columns: [
-               ["days you've been to the gym this month", numCheckins],
-               ['days total this month', daysLeft],
-           ],
-           type: 'pie'
-           },
-           pie: {
-             label: {
-               color: "#00ff00 ",
-               format: function (value, ratio, id) {
-               if(value === numCheckins){
-                 // return d3.format('')(value) + " days you've been to the gym this month";
-                 return d3.format('')(value);
-               }
-               else if (value === daysLeft){
-                   // return d3.format('')(value) + " days total this month";
-                   return;
-               }
+    if(pie){
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+            columns: [
+                ["days you've been to the gym this month", numCheckins],
+                ['days total this month', daysLeft],
+            ],
+            type: 'pie'
+            },
+            pie: {
+                label: {
+                color: "#00ff00 ",
+                format: function (value, ratio, id) {
+                if(value === numCheckins){
+                    // return d3.format('')(value) + " days you've been to the gym this month";
+                    return d3.format('')(value);
+                }
+                else if (value === daysLeft){
+                    // return d3.format('')(value) + " days total this month";
+                    return;
+                }
 
-               }
-             }
-           }
-       });
-   } else {
+                }
+                }
+            }
+        });
+    } else {
+        var chart2 = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    ['Dollars Saved', (numCheckins)],
+                ],
+                type: 'gauge',
+            },
+            color: {
+                pattern: ['#205A66 ', '#FFA24F ', '#FFA24F ', '#60B044 '], // the three color levels for the percentage values.
+                threshold: {
+                    values: [maxCheckins]
+                }
+            },
+            size: {
+                height: 180
+            },
+            gauge: {
+                max: maxCheckins,
+                label: {
+                    format: function(val, ratio){
+                        return '$' + val;
+                    }
+                }
+            },
+        });
+    }
+    if (line){
+        $("#line").show()
+        var chart = c3.generate({
+            bindto: '#line',
+            data: {
+                columns: [
+                    ['April', 1, 4, 5, 0],
+                ]
+            }
+        });
+        $('#calendar').hide()
+    } else {
+        $("#line").hide()
+        $('#calendar').show()
+    }
 
-       var chart2 = c3.generate({
-           bindto: '#chart',
-           data: {
-               columns: [
-                   ['Dollars Saved', (numCheckins)],
-               ],
-               type: 'gauge',
-           },
-           color: {
-               pattern: ['#205A66 ', '#FFA24F ', '#FFA24F ', '#60B044 '], // the three color levels for the percentage values.
-               threshold: {
-                   values: [maxCheckins]
-               }
-           },
-           size: {
-               height: 180
-           },
-           gauge: {
-               max: maxCheckins,
-               label: {
-                   format: function(val, ratio){
-                       return '$' + val;
-                   }
-               }
-           },
-       });
-   }
+
 }
 
 </script>
