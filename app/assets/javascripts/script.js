@@ -6,8 +6,10 @@ $(function(){
     var chart, chart2;
     var numCheckins = gon.num_checkins;
     var maxCheckins = gon.max_checkins;
-    var daysLeft = gon.days_left;
-  
+    var daysLeft = gon.days_left
+    $('.link').click(function(){
+        renderChart()
+    })
     renderChart();
     $("#pieTrue").css("background-color", "#696969")
     function changeBorder() {

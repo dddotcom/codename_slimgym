@@ -1,6 +1,14 @@
-<% if @current_user %>
-  <a href="/logout">Logout</a>
-<% else %>
-  <a href="/login">Login</a>
-  <a href="/signup">Signup</a>
-<% end %>
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">Whealth</a>
+  </div>
+  <ul class="nav navbar-nav pull-right">
+    <% if @current_user %>
+      <li><a class="btn" href="/users/show">Profile</a></li>
+      <li><a class="btn" href="/logout">Logout</a></li>
+    <% else %>
+      <li><a class="btn" href="/login">Login</a></li>
+      <li><a class="btn" href="/signup">Signup</a></li>
+    <% end %>
+  </ul>
+</div>
