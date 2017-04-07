@@ -7,12 +7,29 @@ $(function(){
     var numCheckins = gon.num_checkins;
     var maxCheckins = gon.max_checkins;
     var daysLeft = gon.days_left;
+  
     renderChart();
+    $("#pieTrue").css("background-color", "#696969")
+    function changeBorder() {
+        if (pie) {
+            $("#pieTrue").css("background-color", "#696969")
+            $("#pieFalse").css("background-color", "orange")
+        } else {
+            $("#pieTrue").css("background-color", "orange")
+            $("#pieFalse").css("background-color", "#696969")
+        }
+    }
 
-    $("#toggleChart").click(function() {
-        pie = !pie
-        console.log(pie)
+    $("#pieTrue").click(function() {
+        pie = true
         renderChart();
+        changeBorder();
+    });
+
+    $("#pieFalse").click(function() {
+        pie = false
+        renderChart();
+        changeBorder();
     });
 
     function renderChart() {
